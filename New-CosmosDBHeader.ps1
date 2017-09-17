@@ -60,7 +60,8 @@ function New-CosmosDBHeader {
         [string]$Key,
         [ValidateSet('master','resource')]
         [string]$KeyType,
-        [string]$tokenVersion
+        [string]$tokenVersion,
+        [HashTable]$CosmosDBConnection
     )
     
     begin {
@@ -82,6 +83,7 @@ function New-CosmosDBHeader {
             "authorization" = [System.Web.HttpUtility]::UrlEncode($authorizationFormat)
             "x-ms-version" = "2015-12-16"
             "x-ms-date" = $UTCDate
+            "Content-Type" = "application/json"
             }
     }
     
